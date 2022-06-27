@@ -27,7 +27,7 @@ class SpringBootAppApplicationTests {
 		ResponseEntity<String> response = restTemplate.getForEntity("/health", String.class);
 
 		Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-		Assertions.assertThat(response.getBody()).isEqualTo("{\"status\":\"UP\"}");
+		Assertions.assertThat(response.getBody()).isEqualTo("{\"status\":\"UP\",\"groups\":[\"liveness\",\"readiness\"]}");
 	}
 
 	@Test
@@ -41,7 +41,7 @@ class SpringBootAppApplicationTests {
 
 	@Test
 	public void testHelloNameEndpoint() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/greeting/Nishant", String.class);
+		ResponseEntity<String> response = restTemplate.getForEntity("/greeting/Madan", String.class);
 
 		Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		Assertions.assertThat(response.getBody()).isEqualTo("Hello Nishant, Welcome to Spring-Boot World !!");
